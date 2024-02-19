@@ -26,6 +26,13 @@ void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
 void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
+/**
+ * enum kind_e - ennum for a deckl of cards
+ * @SPADE: APSDE CARD
+ * @HEART: HEARTS
+ * @CLUB: CLUB CARD
+ * @DIAMOND: DIAMOMND CARD
+ */
 typedef enum kind_e
 {
 	SPADE = 0,
