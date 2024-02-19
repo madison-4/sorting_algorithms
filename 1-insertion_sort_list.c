@@ -27,8 +27,21 @@ void swap_list(listint_t *curr)
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *head, *temp, *curr;
+	listint_t *head, *curr;
 
-	if ((!(list)) || (!(*list)) || (!(list->next)))
+	if ((!(list)) || (!(*list)) || (!((*list)->next)))
 		return;
-	
+	head = *list;
+	while (head)
+	{
+		curr = head->next;
+		if ((head->n) > (curr->n))
+		{
+			swap_list(curr);
+			print_list(*list);
+			head = *list;
+			continue;
+		}
+		head = head->next;
+	}
+}
