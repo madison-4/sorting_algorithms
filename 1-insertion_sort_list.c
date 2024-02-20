@@ -1,6 +1,8 @@
 #include "sort.h"
 /**
  * swap_list - function to sort a list ack to teh beginning
+ * This function is to be used with the seltion sort function only.
+ * It can only receive non-NULL curr and it diesn't check for that
  * @curr: current node to swap back to beginning
  * It is a doubly linked lists
  * @head: address of the head
