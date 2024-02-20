@@ -3,9 +3,10 @@
  * sort_list - function to sort a list ack to teh beginning
  * @list: current node to swap back to beginning
  * It is a doubly linked lists
+ * @head: address of the head
  * Return: void, since it uses pointers, it'll haoen n place
  */
-void swap_list(listint_t *curr)
+void swap_list(listint_t *curr, listint_t **head)
 {
 	listint_t *tempprev, *tempnext;
 
@@ -13,6 +14,16 @@ void swap_list(listint_t *curr)
 		return;
 	tempprev = curr->prev;
 	tempnext = curr->next;
+	if (tempprev->prev == NULL)
+	{
+		tempprev->next = curr->next;
+		tempprev->prev = curr;
+		curr->next = tempprev;
+		curr->prev = NULL;
+		tempnext->prev = tempprev;
+		*head = curr;
+		return;
+	}
 	tempprev->prev->next = curr;
 	curr->prev = tempprev->prev;
 	tempnext->prev = tempprev;
@@ -37,7 +48,7 @@ void insertion_sort_list(listint_t **list)
 		curr = head->next;
 		if ((head->n) > (curr->n))
 		{
-			swap_list(curr);
+			swap_list(curr, list);
 			print_list(*list);
 			head = *list;
 			continue;
