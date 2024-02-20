@@ -49,7 +49,6 @@ void swap_list(listint_t *curr, listint_t **head)
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *head, *curr;
-	int i, r;
 
 	if ((!(list)) || (!(*list)) || (!((*list)->next)))
 		return;
@@ -57,12 +56,10 @@ void insertion_sort_list(listint_t **list)
 	while (head->next)
 	{
 		curr = head->next;
-		i = head->n;
-		r = curr->n;
-		if ((i) > (r))
+		if ((head->n) > (head->next->n))
 		{
 			swap_list(curr, list);
-			print_list(*list);
+			print_list((const listint_t *)*list);
 			head = *list;
 			continue;
 		}
