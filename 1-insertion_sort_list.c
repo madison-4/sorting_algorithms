@@ -1,14 +1,14 @@
 #include "sort.h"
 /**
- * sort_list - function to sort a list ack to teh beginning
- * @list: current node to swap back to beginning
+ * swap_list - function to sort a list ack to teh beginning
+ * @curr: current node to swap back to beginning
  * It is a doubly linked lists
  * @head: address of the head
  * Return: void, since it uses pointers, it'll haoen n place
  */
 void swap_list(listint_t *curr, listint_t **head)
 {
-	listint_t *tempprev, *tempnext;
+	listint_t *tempprev, *tempnext, *tempprevprev;
 
 	if (!(curr))
 		return;
@@ -24,6 +24,16 @@ void swap_list(listint_t *curr, listint_t **head)
 		*head = curr;
 		return;
 	}
+	if (curr->next == NULL)
+	{
+		tempprevprev = curr->prev->prev;
+		tempprevprev->next = curr;
+		curr->prev = tempprevprev;
+		curr->next = tempprev;
+		tempprev->next = NULL;
+		tempprev->prev = curr;
+		return;
+	}
 	tempprev->prev->next = curr;
 	curr->prev = tempprev->prev;
 	tempnext->prev = tempprev;
@@ -32,7 +42,7 @@ void swap_list(listint_t *curr, listint_t **head)
 	curr->next = tempprev;
 }
 /**
- * insertion_sort_list - an insertion sort implementation for doublyy linked lists
+ * insertion_sort_list - an insertion sort implementation dlinked lists
  * @list: address of the head of the  list
  * Return: no return
  */
