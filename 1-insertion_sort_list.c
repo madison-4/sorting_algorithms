@@ -10,8 +10,6 @@ void swap_list(listint_t *curr, listint_t **head)
 {
 	listint_t *tempprev, *tempnext, *tempprevprev;
 
-	if (!(curr))
-		return;
 	tempprev = curr->prev;
 	tempnext = curr->next;
 	if ((tempprev->prev == NULL) && (curr->next == NULL))
