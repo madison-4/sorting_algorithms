@@ -14,6 +14,15 @@ void swap_list(listint_t *curr, listint_t **head)
 		return;
 	tempprev = curr->prev;
 	tempnext = curr->next;
+	if ((tempprev->prev == NULL) && (curr->next == NULL))
+	{
+		tempprev->next = NULL;
+		tempprev->prev = curr;
+		curr->prev = NULL;
+		curr->next = tempprev;
+		*head = curr;
+		return;
+	}
 	if (tempprev->prev == NULL)
 	{
 		tempprev->next = curr->next;
@@ -53,7 +62,7 @@ void insertion_sort_list(listint_t **list)
 	if (((list) == NULL) || ((*list) == NULL) || (((*list)->next) == NULL))
 		return;
 	head = *list;
-	while (head->next)
+	while (head && head->next)
 	{
 		curr = head->next;
 		if ((head->n) > (head->next->n))
