@@ -54,10 +54,9 @@ void insertion_sort_list(listint_t **list)
 	if ((!(list)) || (!(*list)) || (!((*list)->next)))
 		return;
 	head = *list;
-	while (head)
+	while (head->next)
 	{
 		curr = head->next;
-		printf("address of curr is %p \n", (void *)curr);
 		i = head->n;
 		r = curr->n;
 		if ((i) > (r))
