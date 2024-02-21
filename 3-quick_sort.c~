@@ -1,0 +1,4 @@
+#include "sort.h"
+/**
+ * swap - function to swap two integers in memory
+ * @one: first integer
